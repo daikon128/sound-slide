@@ -27,8 +27,8 @@ class AudioControl extends React.Component {
   }
 
   setAudioTime() {
-    this.setState((state, props) => {
-      return {currentTime: this.audio.current.currentTime};
+    this.setState({
+      currentTime: this.audio.current.currentTime
     });
   }
 
