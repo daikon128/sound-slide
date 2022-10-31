@@ -7,8 +7,8 @@ app.get('/ping', (req, res) => {
   res.send('pong!')
 })
 
-app.get('/audio/test.mp3', (req, res) => {
-  ms.pipe(req, res, './data/sample-3s.mp3')
+app.get('/audio/test.wav', (req, res) => {
+  ms.pipe(req, res, './data/sample-3s.wav')
 })
 
 app.listen(port, () => {

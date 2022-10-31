@@ -37,7 +37,7 @@ class AudioControl extends React.Component {
     const audioTag =
       <audio controls
              ref={this.audio}
-             src="http://localhost:3001/audio/test.mp3">
+             src="http://localhost:3001/audio/test.wav">
         Your browser does not support the
         <code>audio</code> element.
       </audio>
@@ -48,9 +48,22 @@ class AudioControl extends React.Component {
       <div className="audio">
         {audioTag}
       </div>
+        <ChoseMusic></ChoseMusic>
     </span>
     )
   }
+}
+
+// wip
+function ChoseMusic() {
+  function handleClick(event) {
+    event.preventDefault();
+    alert("a button clicked")
+  }
+
+  return (
+    <button type="submit" onClick={handleClick}>click me</button>
+  )
 }
 
 export default App;
