@@ -1,31 +1,29 @@
-import React from "react";
+import React, {useEffect} from "react";
 
-export class AudioControl extends React.Component {
-  constructor(props) {
-    super(props);
-    this.audio = React.createRef()
-    this.state = {currentTime: 0.0}
-  }
+export const AudioControl = () => {
+  const audio = React.createRef()
+  const state = {currentTime: 0.0}
+  let timerId;
 
-  componentDidMount() {
-    this.timerID = setInterval(
-      () => this.setAudioTime(),
+
+  useEffect(() => {
+    timerId = setInterval(
+      () => setAudioTime(),
       50
     );
-  }
+    return () => {
+      clearInterval(timerId);
 
-  componentWillUnmount() {
-    clearInterval(this.timerID);
-  }
+    }
+  })
 
-  setAudioTime() {
+  const setAudioTime = () => {
     this.setState({
       currentTime: this.audio.current.currentTime
     });
   }
 
 
-  render() {
     const audioTag =
       <audio controls
              ref={this.audio}
@@ -42,5 +40,4 @@ export class AudioControl extends React.Component {
       </div>
     </span>
     )
-  }
 }
