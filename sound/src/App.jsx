@@ -1,7 +1,6 @@
 import './App.css';
 import {AudioControl} from "./component/AudioControl";
-
-const React = require('react');
+import React from "react";
 
 function App() {
   return (
