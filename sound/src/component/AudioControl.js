@@ -1,13 +1,12 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 
 export const AudioControl = () => {
   const audio = React.createRef()
-  const state = {currentTime: 0.0}
-  let timerId;
+  const [currentTime, setCurrentTime] = useState(0.0)
 
 
   useEffect(() => {
-    timerId = setInterval(
+    const timerId = setInterval(
       () => setAudioTime(),
       50
     );
@@ -18,15 +17,13 @@ export const AudioControl = () => {
   })
 
   const setAudioTime = () => {
-    this.setState({
-      currentTime: this.audio.current.currentTime
-    });
+    setCurrentTime(audio.current.currentTime)
   }
 
 
     const audioTag =
       <audio controls
-             ref={this.audio}
+             ref={audio}
              src="http://localhost:3001/audio/test.wav">
         Your browser does not support the
         <code>audio</code> element.
@@ -34,7 +31,7 @@ export const AudioControl = () => {
 
     return (
       <span>
-      {this.state.currentTime}
+      {currentTime}
         <div className="audio">
         {audioTag}
       </div>
