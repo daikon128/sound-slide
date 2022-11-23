@@ -1,6 +1,6 @@
 {
-  "name": "sound-be",
-  "version": "1.0.0",
+  "name": "sound-api",
+  "version": "0.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {

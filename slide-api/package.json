@@ -1,6 +1,6 @@
 {
-  "name": "slide-be",
-  "version": "0.0.0",
+  "name": "slide-api",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
     "start": "node ./bin/www"
