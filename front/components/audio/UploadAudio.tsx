@@ -1,5 +1,7 @@
 import React from "react";
 import axios from "axios";
+import {Button} from "@mui/material";
+import {Upload} from "@mui/icons-material";
 
 export const UploadAudio = () => {
   const inputFileElement = React.createRef<HTMLInputElement>()
@@ -19,7 +21,7 @@ export const UploadAudio = () => {
         <input type="file" ref={inputFileElement}/>
       </div>
       <div>
-        <input type="button" value="アップロード" onClick={upload}/>
+        <Button variant="outlined" onClick={upload} startIcon={<Upload />}>アップロード</Button>
       </div>
     </div>
   )
