@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import {Button, CircularProgress} from "@mui/material";
+import {Backdrop, Button, CircularProgress} from "@mui/material";
 import {Upload} from "@mui/icons-material";
 
 export const UploadAudio = () => {
@@ -18,7 +18,6 @@ export const UploadAudio = () => {
 
   return (
     <div>
-      { isLoading ? <CircularProgress /> : null}
       <div>
         音声ファイルをアップロードしてください
       </div>
@@ -26,8 +25,13 @@ export const UploadAudio = () => {
         <input type="file" ref={inputFileElement}/>
       </div>
       <div>
-        <Button variant="outlined" onClick={upload} startIcon={<Upload />}>アップロード</Button>
+        <Button variant="outlined" onClick={upload} startIcon={<Upload/>}>アップロード</Button>
       </div>
+      <Backdrop
+        sx={{color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1}}
+        open={isLoading}>
+        <CircularProgress></CircularProgress>
+      </Backdrop>
     </div>
   )
 };
