@@ -1,0 +1,7 @@
+.main {
+    display: grid;
+    place-content: center;
+    justify-items: center;
+    align-content: center;
+    gap: 0.5rem;
+}
