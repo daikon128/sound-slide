@@ -1,7 +1,7 @@
 import {Request, Response} from "express";
+import express from "express";
+import multer from "multer";
 
-const express = require('express')
-const multer = require('multer')
 const upload = multer({ dest: "./data/uploads/"})
 const app = express()
 const port = 3001
@@ -15,8 +15,7 @@ app.get('/audio/test.wav', (req: Request, res: Response) => {
   ms.pipe(req, res, './data/sample-3s.wav')
 })
 
-// TODO change request type
-app.post('/audio', upload.array("audio", 1), (req: any, res: Response) => {
+app.post('/audio', upload.array("audio", 1), (req: Request, res: Response) => {
   console.log(req.files)
   res.send('success')
 })
