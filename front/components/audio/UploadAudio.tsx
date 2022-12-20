@@ -20,7 +20,7 @@ export const UploadAudio = () => {
     }
     setIsLoading(true)
     const formData = new FormData()
-    formData.append('file', currentFile.file)
+    formData.append('audio', currentFile.file)
     const response = await axios.post('/api/audio', formData, {
       headers: {
         'Content-Type': 'multipart/form-data'
