@@ -27,7 +27,7 @@ export const AudioControl = () => {
   const audioTag =
     <audio controls
            ref={audio}
-           src="http://localhost:3001/audio/test.wav">
+           src="http://localhost:3001/audio/2">
       Your browser does not support the
       <code>audio</code> element.
     </audio>

@@ -13,8 +13,33 @@ app.get('/ping', (req: Request, res: Response) => {
   res.send('pong!')
 })
 
-app.get('/audio/test.wav', (req: Request, res: Response) => {
-  ms.pipe(req, res, './data/sample-3s.wav')
+app.get('/audio', async (req: Request, res: Response) => {
+  const audio = await prisma.sound.findMany()
+  return res.json(audio.map( (audio) => {
+    return {
+      id: audio.id,
+      name: audio.name
+    }
+  }))
+})
+
+app.get('/audio/:id', async(req: Request, res: Response) => {
+  const id: number = parseInt(req.params.id)
+  console.log(id)
+  console.log(req.params.id)
+  console.log(typeof id)
+  const audio = await prisma.sound.findFirst({
+    where: {
+      id: id
+    }
+  })
+  if (audio == null) {
+    res.status(404)
+    res.send(`id : ${req.params.id} is not found` )
+    return
+  }
+  console.log(audio.path)
+  ms.pipe(req, res, audio.path, '.wav')
 })
 
 app.post('/audio', upload.array("audio", 1), async (req: Request, res: Response) => {
