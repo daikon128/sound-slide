@@ -1,0 +1,20 @@
+### ping
+GET http://localhost:3002/ping
+
+### get
+GET http://localhost:3002/sound-slide/2
+
+### get
+DELETE http://localhost:3002/sound-slide/1
+
+### post
+POST http://localhost:3002/sound-slide
+Content-Type: application/json
+
+{
+  "soundId": 2,
+  "slideId": 1,
+  "name": "first-slide",
+  "description": "memo"
+}
+
