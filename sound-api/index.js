@@ -11,6 +11,10 @@ app.get('/audio/test.wav', (req, res) => {
   ms.pipe(req, res, './data/sample-3s.wav')
 })
 
+app.post('/audio', (req, res) => {
+  res.send('success')
+})
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })

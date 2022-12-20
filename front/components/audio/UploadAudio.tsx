@@ -11,19 +11,25 @@ export const UploadAudio = () => {
     file : File | null
   }
   const [currentFile, setCurrentFile] = React.useState<FileState>({ file: null })
+  const [message, setMessage] = React.useState("")
 
   const upload = async () => {
+    if (currentFile.file == null) {
+      setMessage("file not selected")
+      return
+    }
     setIsLoading(true)
-    await new Promise(_ => setTimeout(_, 1000))
-    const response = await axios.post('/api/audio', {
-      foo: "bar"
+    const formData = new FormData()
+    formData.append('file', currentFile.file)
+    const response = await axios.post('/api/audio', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
     }).finally(() => setIsLoading(false))
     console.log(response)
   }
 
   const fileSelected = () => {
-    console.log("file selected")
-    console.log(inputFileElement.current?.files?.length)
     const file = inputFileElement.current?.files?.item(0)
     if (file != undefined) {
       setCurrentFile({ file: file })
