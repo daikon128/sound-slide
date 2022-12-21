@@ -70,5 +70,5 @@ app.post('/audio', upload.array("audio", 1), async (req: Request, res: Response)
 })
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+  console.log(`sound-api listening on port ${port}`)
 })
