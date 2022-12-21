@@ -1,6 +1,7 @@
 import express from "express";
 import multer from "multer";
 import {PrismaClient} from "@prisma/client";
+import path from "path";
 
 const imageRouter = express.Router();
 const upload = multer({ dest: "./data/uploads"})
@@ -22,7 +23,7 @@ imageRouter.post('/', upload.array("file", 1), async function (req, res) {
   await prisma.image.create({
     data: {
       name: originalname,
-      path: destination + filename
+      path: destination + "/" + filename
     }
   }).catch((reason) => {
     res.status(500)
@@ -31,6 +32,36 @@ imageRouter.post('/', upload.array("file", 1), async function (req, res) {
   })
   res.send('success')
 })
+
+imageRouter.get('/', async function (req, res) {
+  await prisma.image.findMany().then((images) => {
+    console.dir(images)
+    res.json(
+      images.map((image) => {
+        return {
+          id: image.id
+        }
+      })
+    )
+  })
+})
+
+imageRouter.get('/:id', async function(req, res) {
+  const id: number = parseInt(req.params.id)
+  const image = await prisma.image.findFirst({
+    where: {
+      id: id
+    }
+  })
+  if (image == null) {
+    res.status(404)
+    res.send("not found")
+    return
+  }
+  res.sendFile(path.join(__dirname, "../", image.path), {
+
+  })
+});
 
 export {
   imageRouter

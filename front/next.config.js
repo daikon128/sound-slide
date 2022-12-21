@@ -9,8 +9,8 @@ const nextConfig = {
         destination: "http://localhost:3001/audio"
       },
       {
-        source: "/api/image",
-        destination: "http://localhost:3003/image"
+        source: "/api/image/:slug*",
+        destination: "http://localhost:3003/image/:slug*"
       }
     ]
   }
