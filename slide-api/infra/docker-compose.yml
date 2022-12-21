@@ -1,0 +1,16 @@
+version: '3'
+services:
+  db:
+    image: mysql:8.0.31
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: slide
+      MYSQL_USER: slide-api-app
+      MYSQL_PASSWORD: password
+      TZ: 'Asia/Tokyo'
+    volumes:
+      - ./mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+      - ./mysql/init/sql:/docker-entrypoint-initdb.d
+    ports:
+      - 23306:3306
