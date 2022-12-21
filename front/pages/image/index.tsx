@@ -1,7 +1,30 @@
 import {SlideImage} from "../../components/slide/SlideImage";
+import {Box, Grid, ImageList, ImageListItem} from "@mui/material";
+import {useEffect, useState} from "react";
+import {Image} from "../../model/image";
+import {fetchImages} from "../../driver/ImageDriver";
 
 export default function ImagePage() {
+  const [images, setImages] = useState<Image[]>([])
+  useEffect(() => {
+    fetchImages().then((result) => {
+      setImages(result)
+    })
+  }, [])
+
+  const slideImageGridList = (images: Image[]) => {
+    const srcQuery = "w=248&&fit=crop&auto=format"
+    const srcSetQuery = "w=248&fit=crop&auto=format&dpr=2 2x"
+    return images.map((image) => {
+      return (<ImageListItem key={image.id}>
+        <SlideImage id={image.id} srcQuery={srcQuery} srcSetQuery={srcSetQuery}/>
+      </ImageListItem>)
+    })
+  }
+
   return (
-    <SlideImage id={1}/>
+      <ImageList variant="masonry" cols={3} gap={8}>
+        {slideImageGridList(images)}
+      </ImageList>
   )
 }

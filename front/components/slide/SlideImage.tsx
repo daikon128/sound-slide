@@ -1,10 +1,12 @@
 import React from "react";
 
-export const SlideImage = (props: {id: number}) => {
+export const SlideImage = (props: {id: number, srcQuery?: string, srcSetQuery?: string}) => {
   const imagePath = `/api/image/${props.id}`
+  const src = `${imagePath}?${props.srcQuery}`
+  const setSrc = `${imagePath}?${props.srcSetQuery}`
   return (
     <div>
-      <img src={imagePath} alt="sample"/>
+      <img src={src} srcSet={setSrc} alt="sample"/>
     </div>
   )
 }
