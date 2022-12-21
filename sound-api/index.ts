@@ -25,9 +25,6 @@ app.get('/audio', async (req: Request, res: Response) => {
 
 app.get('/audio/:id', async(req: Request, res: Response) => {
   const id: number = parseInt(req.params.id)
-  console.log(id)
-  console.log(req.params.id)
-  console.log(typeof id)
   const audio = await prisma.sound.findFirst({
     where: {
       id: id
@@ -38,7 +35,6 @@ app.get('/audio/:id', async(req: Request, res: Response) => {
     res.send(`id : ${req.params.id} is not found` )
     return
   }
-  console.log(audio.path)
   ms.pipe(req, res, audio.path, '.wav')
 })
 
@@ -65,7 +61,6 @@ app.post('/audio', upload.array("audio", 1), async (req: Request, res: Response)
     res.send("error:" + reason)
     return
   })
-  console.log(result)
   res.send('success')
 })
 
