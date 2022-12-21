@@ -7,6 +7,10 @@ const nextConfig = {
       {
         source: "/api/audio",
         destination: "http://localhost:3001/audio"
+      },
+      {
+        source: "/api/image",
+        destination: "http://localhost:3003/image"
       }
     ]
   }

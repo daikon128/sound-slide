@@ -38,7 +38,7 @@ app.get('/audio/:id', async(req: Request, res: Response) => {
   ms.pipe(req, res, audio.path, '.wav')
 })
 
-app.post('/audio', upload.array("audio", 1), async (req: Request, res: Response) => {
+app.post('/audio', upload.array("file", 1), async (req: Request, res: Response) => {
   if (req.files == null) {
     res.status(400)
     res.send("file not found")

@@ -25,7 +25,7 @@ export const UploadFile = (props: UploadFileProp) => {
     }
     setIsLoading(true)
     const formData = new FormData()
-    formData.append('audio', currentFile.file)
+    formData.append('file', currentFile.file)
     const response = await axios.post(props.uploadPath, formData, {
       headers: {
         'Content-Type': 'multipart/form-data'

@@ -6,7 +6,7 @@ const imageRouter = express.Router();
 const upload = multer({ dest: "./data/uploads"})
 const prisma = new PrismaClient()
 
-imageRouter.post('/', upload.array("slide", 1), async function (req, res) {
+imageRouter.post('/', upload.array("file", 1), async function (req, res) {
   if (req.files == null) {
     res.status(400)
     res.send("file not found")
