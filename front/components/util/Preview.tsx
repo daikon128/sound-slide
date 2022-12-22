@@ -18,7 +18,7 @@ export const Preview = (props: { file: File | null }) => {
     reader.onload = (event) => {
       const fileResult = event?.target?.result
       const mimeType = props.file?.type
-      if (mimeType == null || fileResult == null || typeof fileResult != 'string') {
+      if (mimeType == null || typeof fileResult != 'string') {
         return
       }
       const element = getElementFromMimeType(mimeType, fileResult)
@@ -28,9 +28,8 @@ export const Preview = (props: { file: File | null }) => {
       setPreviewElement(element)
     }
     reader.readAsDataURL(props.file);
-
-
   }, [props.file])
+
   const getElementFromMimeType = (mimeType: string, src: string) => {
     const getTagNameFromMimeType = (mimeType: string) => {
       const regexList = [
