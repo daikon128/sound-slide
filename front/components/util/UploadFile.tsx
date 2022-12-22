@@ -1,8 +1,12 @@
-import React from "react";
+import React, {useEffect} from "react";
 import axios from "axios";
-import {Backdrop, Button, CircularProgress} from "@mui/material";
-import {FileOpen, Upload} from "@mui/icons-material";
+import Backdrop from "@mui/material/Backdrop";
+import Button from "@mui/material/Button";
+import CircularProgress from "@mui/material/CircularProgress";
+import Upload from "@mui/icons-material/Upload";
+import FileOpen from "@mui/icons-material/FileOpen";
 import style from "./UploadFile.module.css"
+import {Preview} from "./Preview";
 
 type UploadFileProp = {
   fileType: string,
@@ -58,6 +62,9 @@ export const UploadFile = (props: UploadFileProp) => {
       </div>
       <div>
         { currentFile.file?.name }
+      </div>
+      <div>
+        <Preview file={currentFile.file} />
       </div>
       <Backdrop
         sx={{color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1}}

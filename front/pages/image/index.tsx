@@ -1,5 +1,6 @@
 import {SlideImage} from "../../components/slide/SlideImage";
-import {Box, Grid, ImageList, ImageListItem} from "@mui/material";
+import ImageListItem from "@mui/material/ImageListItem";
+import ImageList from "@mui/material/ImageList";
 import {useEffect, useState} from "react";
 import {Image} from "../../model/image";
 import {fetchImages} from "../../driver/ImageDriver";
@@ -23,8 +24,8 @@ export default function ImagePage() {
   }
 
   return (
-      <ImageList variant="masonry" cols={3} gap={8}>
-        {slideImageGridList(images)}
-      </ImageList>
+    <ImageList variant="masonry" cols={3} gap={8}>
+      {slideImageGridList(images)}
+    </ImageList>
   )
 }
