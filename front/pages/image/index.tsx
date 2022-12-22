@@ -1,4 +1,4 @@
-import {SlideImage} from "../../components/slide/SlideImage";
+import {ImageElement} from "../../components/image/ImageElement";
 import ImageListItem from "@mui/material/ImageListItem";
 import ImageList from "@mui/material/ImageList";
 import {useEffect, useState} from "react";
@@ -18,7 +18,7 @@ export default function ImagePage() {
     const srcSetQuery = "w=248&fit=crop&auto=format&dpr=2 2x"
     return images.map((image) => {
       return (<ImageListItem key={image.id}>
-        <SlideImage id={image.id} srcQuery={srcQuery} srcSetQuery={srcSetQuery}/>
+        <ImageElement id={image.id} srcQuery={srcQuery} srcSetQuery={srcSetQuery}/>
       </ImageListItem>)
     })
   }
